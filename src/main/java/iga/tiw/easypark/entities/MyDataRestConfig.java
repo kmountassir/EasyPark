@@ -11,10 +11,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 		config.exposeIdsFor(UserApp.class);
-		HttpMethod[]methodsNotAllowed = {HttpMethod.POST};
-		config.getExposureConfiguration().forDomainType(UserApp.class)
-										 .withItemExposure((netdata,httpMethods)->httpMethods.disable(methodsNotAllowed))
-										 .withCollectionExposure((netdata,httpMethods)->httpMethods.disable(methodsNotAllowed));
 
 	}
 }
