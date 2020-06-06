@@ -1,6 +1,7 @@
 package iga.tiw.easypark.sec;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.FilterChain;
@@ -17,10 +18,16 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import iga.tiw.easypark.entities.UserApp;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+class Reponse{
+	 String user;
+	 Date expiration;
+}
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	
@@ -56,6 +63,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 						.claim("roles", springUser.getAuthorities())
 						.compact();
 		response.addHeader(SecurityConstants.HEADER_STRING,SecurityConstants.TOKEN_PREFIX+jwtToken);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		Reponse rep = new Reponse();
+		rep.user = springUser.getUsername();
+		rep.expiration = new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME);
+		String reponseJsonString = new Gson().toJson(rep);
+		PrintWriter out = response.getWriter();
+		out.print(reponseJsonString);
+		out.flush();
 	}
 
 }
