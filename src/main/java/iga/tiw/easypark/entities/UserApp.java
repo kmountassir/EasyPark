@@ -43,9 +43,9 @@ public class UserApp implements Serializable {
 	@UpdateTimestamp
 	private Date updatedAt;
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Collection<RoleApp> roles;
+	private Collection<RoleApp> roles = new ArrayList<RoleApp>();;
 	@OneToMany(mappedBy="user")
-	private List<Location>locations;
+	private List<Location>locations = new ArrayList<Location>();
 	
 	public UserApp(Long id, String username, String password, Date createdAt, Date updatedAt) {
 		super();
