@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import iga.tiw.easypark.entities.Location;
 import iga.tiw.easypark.entities.RoleApp;
 import iga.tiw.easypark.entities.UserApp;
+import iga.tiw.easypark.entities.Voice;
 import iga.tiw.easypark.repository.LocationRepository;
 import iga.tiw.easypark.repository.UserAppRepository;
+import iga.tiw.easypark.repository.VoiceRepository;
 import iga.tiw.easypark.services.AccountService;
 
 @SpringBootApplication
@@ -25,6 +27,8 @@ public class EasyParkApplication implements CommandLineRunner {
 	UserAppRepository userAppRepository;
 	@Autowired
 	LocationRepository locationRepository;
+	@Autowired
+	VoiceRepository voiceRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EasyParkApplication.class, args);
@@ -45,6 +49,10 @@ public class EasyParkApplication implements CommandLineRunner {
 		locationRepository.save(new Location(null,1000.0,1000.0,null,admin));
 		locationRepository.findAll().forEach(location->{
 			System.out.println(location);
+		});
+		voiceRepository.save(new Voice(null,"ceci est mon avis",admin));
+		voiceRepository.findAll().forEach(voice->{
+			System.out.println(voice);
 		});
 
 	}

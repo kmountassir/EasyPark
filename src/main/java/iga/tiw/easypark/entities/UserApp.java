@@ -46,6 +46,8 @@ public class UserApp implements Serializable {
 	private Collection<RoleApp> roles = new ArrayList<RoleApp>();;
 	@OneToMany(mappedBy="user")
 	private List<Location>locations = new ArrayList<Location>();
+	@OneToMany(mappedBy="user")
+	private List<Voice>voices = new ArrayList<Voice>();
 	
 	public UserApp(Long id, String username, String password, Date createdAt, Date updatedAt) {
 		super();
@@ -56,6 +58,7 @@ public class UserApp implements Serializable {
 		this.updatedAt = updatedAt;
 		this.roles = new ArrayList<RoleApp>();
 		this.locations = new ArrayList<Location>();
+		this.voices = new ArrayList<Voice>();
 	}
 }
 
