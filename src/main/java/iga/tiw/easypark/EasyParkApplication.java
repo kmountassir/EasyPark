@@ -36,24 +36,24 @@ public class EasyParkApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		UserApp admin = accountService.saveUser(new UserApp(null, "admin", "1234", null, null));
-		accountService.saveUser(new UserApp(null, "user", "1234", null, null));
-		accountService.saveRole(new RoleApp(null,"ADMIN"));
-		accountService.saveRole(new RoleApp(null,"USER"));
-		accountService.addRoleToUser("admin", "ADMIN");
-		accountService.addRoleToUser("admin", "USER");
-		accountService.addRoleToUser("user", "USER");
-		userAppRepository.findAll().forEach(user->{
-			System.out.println(user);
-		});
-		locationRepository.save(new Location(null,1000.0,1000.0,null,admin));
-		locationRepository.findAll().forEach(location->{
-			System.out.println(location);
-		});
-		voiceRepository.save(new Voice(null,"ceci est mon avis",admin));
-		voiceRepository.findAll().forEach(voice->{
-			System.out.println(voice);
-		});
+//		UserApp admin = accountService.saveUser(new UserApp(null, "admin", "1234", null, null));
+		//accountService.saveUser(new UserApp(null, "user", "1234", null, null));
+//		accountService.saveRole(new RoleApp(null,"ADMIN"));
+//		accountService.saveRole(new RoleApp(null,"USER"));
+//		accountService.addRoleToUser("admin", "ADMIN");
+//		accountService.addRoleToUser("admin", "USER");
+	//	accountService.addRoleToUser("user", "USER");
+//		userAppRepository.findAll().forEach(user->{
+//			System.out.println(user);
+//		});
+//		locationRepository.save(new Location(null,1000.0,1000.0,null,admin));
+//		locationRepository.findAll().forEach(location->{
+//			System.out.println(location);
+//		});
+//		voiceRepository.save(new Voice(null,"ceci est mon avis",admin));
+//		voiceRepository.findAll().forEach(voice->{
+//			System.out.println(voice);
+//		});
 
 	}
 
