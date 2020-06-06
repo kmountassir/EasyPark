@@ -43,11 +43,11 @@ public class UserApp implements Serializable {
 	@UpdateTimestamp
 	private Date updatedAt;
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Collection<RoleApp> roles = new ArrayList<RoleApp>();;
-	@OneToMany(mappedBy="user")
-	private List<Location>locations = new ArrayList<Location>();
+	private Collection<RoleApp> roles = new ArrayList<RoleApp>();
 	@OneToMany(mappedBy="user")
 	private List<Voice>voices = new ArrayList<Voice>();
+	@OneToMany(mappedBy="user")
+	private List<Path>paths = new ArrayList<Path>();
 	
 	public UserApp(Long id, String username, String password, Date createdAt, Date updatedAt) {
 		super();
@@ -57,7 +57,6 @@ public class UserApp implements Serializable {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.roles = new ArrayList<RoleApp>();
-		this.locations = new ArrayList<Location>();
 		this.voices = new ArrayList<Voice>();
 	}
 }

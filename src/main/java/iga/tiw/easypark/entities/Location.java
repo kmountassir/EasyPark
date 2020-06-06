@@ -3,6 +3,7 @@ package iga.tiw.easypark.entities;
 import java.util.Date;
 
 import javax.annotation.Generated;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,16 +19,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity @Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Embeddable
 public class Location {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	private Double longitude;
 	private Double latitude;
-	@CreationTimestamp
-	private Date createdAt;
-	@ManyToOne
-	@JoinColumn(name="user_id_fk")
-	private UserApp user;
 }
